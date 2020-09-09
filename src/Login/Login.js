@@ -12,6 +12,7 @@ import Row from 'react-bootstrap/Row'
 const Login = () => {
 	const [auth,UseAuth] = useState(false);
 	const [show,ShowPosts] = useState(false);
+	const [search,SearchPosts] = useState(false);
 	// function LogoutFun(){
 	// 	UseAuth(false)
 	// }
@@ -49,6 +50,10 @@ const Login = () => {
 							{
 								show ? <Button variant="danger" onClick={()=>ShowPosts(false)}> Hide Post List </Button> :
 								 <Button variant="primary" onClick={()=>ShowPosts(true)}> Show Post List </Button> 
+							}
+							{
+								 search ? <Button variant="danger" onClick={()=>SearchPosts(false)}> Hide Search Post </Button> :
+								 <Button variant="primary" onClick={()=>SearchPosts(true)}> Search Post </Button> 
 							} 
 							{
 								show &&								
@@ -56,10 +61,12 @@ const Login = () => {
 							}
 							
 						</div>
-						<div className="SearchPost">
-							<SearchPost />
-						</div>
-
+						{ 
+							search &&	
+							<div className="SearchPost">
+								<SearchPost />
+							</div>
+						}
 					</>
 				}
 
